@@ -75,7 +75,7 @@ describe('Mocha API Tests', function () {
             hippie()
                 .json()
                 .base('https://localhost:44337')
-                .get('/api/posts')
+                .get('/api')
                 .expectStatus(200)
                 .end();
         });
@@ -84,7 +84,7 @@ describe('Mocha API Tests', function () {
             hippie()
                 .json()
                 .base('https://localhost:44337')
-                .get('/api/posts/1872')
+                .get('/api/1872')
                 .expectStatus(200)
                 .expectBody({
                     userId: 1,
@@ -107,7 +107,7 @@ describe('Mocha API Tests', function () {
             hippie()
                 .json()
                 .base('https://localhost:44337')
-                .post('/api/posts')
+                .post('/api')
                 .send(post)
                 .expectStatus(201)
                 .end();
@@ -115,7 +115,7 @@ describe('Mocha API Tests', function () {
 
 
         it.only('Add Post should give error 400', function () {
-            var post = {
+            var postModel = {
                 userId: 1,
                 id: "110",
                 title: "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
@@ -124,8 +124,8 @@ describe('Mocha API Tests', function () {
             hippie()
                 .json()
                 .base('https://localhost:44337')
-                .post('/api/posts')
-                .send(post)
+                .post('/api/add')
+                .send(postModel)
                 .expectStatus(201)
                 .end();
         });
@@ -140,7 +140,7 @@ describe('Mocha API Tests', function () {
             hippie()
                 .json()
                 .base('https://localhost:44337')
-                .put('/api/posts/1')
+                .put('/api/1')
                 .send(post)
                 .expectStatus(201)
                 .end();
@@ -157,7 +157,7 @@ describe('Mocha API Tests', function () {
             hippie()
                 .json()
                 .base('https://localhost:44337')
-                .put('/api/posts/1')
+                .put('/api/1')
                 .send(post)
                 .expectStatus(201)
                 .end();

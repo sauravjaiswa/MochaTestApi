@@ -20,25 +20,25 @@ namespace MochaTestApi.Controllers
             _postsApiService = postsApiService;
         }
 
-        //[HttpGet]
-        //public async Task<IActionResult> GetPost()
-        //{
-        //    try
-        //    {
-        //        var posts = await _postsApiService.GetAllPosts();
+        [HttpGet]
+        public async Task<IActionResult> GetPost()
+        {
+            try
+            {
+                var posts = await _postsApiService.GetAllPosts();
 
-        //        if (posts == null)
-        //        {
-        //            return NotFound("No posts");
-        //        }
+                if (posts == null)
+                {
+                    return NotFound("No posts");
+                }
 
-        //        return Ok(posts);
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        return BadRequest();
-        //    }
-        //}
+                return Ok(posts);
+            }
+            catch (Exception e)
+            {
+                return BadRequest();
+            }
+        }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetPost(int id)
@@ -75,49 +75,49 @@ namespace MochaTestApi.Controllers
             }
         }
 
-        //[HttpPut("{id}")]
-        //public async Task<IActionResult> PutPost(int id, Post post)
-        //{
-        //    try
-        //    {
-        //        await _postsApiService.PutPost(id, post);
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutPost(int id, Post post)
+        {
+            try
+            {
+                await _postsApiService.PutPost(id, post);
 
-        //        return StatusCode(StatusCodes.Status202Accepted);
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        return BadRequest();
-        //    }
-        //}
+                return StatusCode(StatusCodes.Status202Accepted);
+            }
+            catch (Exception e)
+            {
+                return BadRequest();
+            }
+        }
 
-        //[HttpPatch("{id}")]
-        //public async Task<IActionResult> PatchPost(int id, Post post)
-        //{
-        //    try
-        //    {
-        //        await _postsApiService.PatchPost(id, post);
+        [HttpPatch("{id}")]
+        public async Task<IActionResult> PatchPost(int id, Post post)
+        {
+            try
+            {
+                await _postsApiService.PatchPost(id, post);
 
-        //        return StatusCode(StatusCodes.Status202Accepted);
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        return BadRequest();
-        //    }
-        //}
+                return StatusCode(StatusCodes.Status202Accepted);
+            }
+            catch (Exception e)
+            {
+                return BadRequest();
+            }
+        }
 
-        //[HttpDelete("{id}")]
-        //public async Task<IActionResult> DeletePost(int id)
-        //{
-        //    try
-        //    {
-        //        await _postsApiService.DeletePost(id);
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeletePost(int id)
+        {
+            try
+            {
+                await _postsApiService.DeletePost(id);
 
-        //        return StatusCode(StatusCodes.Status200OK);
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        return BadRequest();
-        //    }
-        //}
+                return StatusCode(StatusCodes.Status200OK);
+            }
+            catch (Exception e)
+            {
+                return BadRequest();
+            }
+        }
     }
 }
