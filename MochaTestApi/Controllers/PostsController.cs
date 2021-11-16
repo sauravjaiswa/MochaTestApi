@@ -62,7 +62,7 @@ namespace MochaTestApi.Controllers
             {
                 if (!ModelState.IsValid)
                 {
-                    return BadRequest();
+                    return StatusCode(StatusCodes.Status400BadRequest);
                 }
 
                 _postsApiService.AddPost(post);
@@ -71,7 +71,7 @@ namespace MochaTestApi.Controllers
             }
             catch (Exception e)
             {
-                return BadRequest();
+                return StatusCode(StatusCodes.Status400BadRequest);
             }
         }
 

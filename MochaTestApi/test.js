@@ -126,8 +126,18 @@ describe('Mocha API Tests', function () {
                 .base('https://localhost:44337')
                 .post('/api/add')
                 .send(postModel)
-                .expectStatus(201)
+                .expectStatus(400)
                 .end();
+
+            /*hippie()
+                .get('https://api.github.com/users/vesln')
+                .expect(function (res, body, next) {
+                    var err = assertSomething;
+                    next(err);
+                })
+                .end(function (err, res, body) {
+                    if (err) throw err;
+                });*/
         });
 
 
@@ -160,6 +170,49 @@ describe('Mocha API Tests', function () {
                 .put('/api/1')
                 .send(post)
                 .expectStatus(201)
+                .end();
+        });
+
+
+
+        //PATCH
+        it('Patch Post', function () {
+            var post = {
+                title: "changing"
+            };
+            hippie()
+                .json()
+                .base('https://localhost:44337')
+                .patch('/api/1')
+                .send(post)
+                .expectStatus(201)
+                .end();
+        });
+
+
+
+        it('Patch Post should give error 400', function () {
+            var post = {
+                userId: "89"
+            };
+            hippie()
+                .json()
+                .base('https://localhost:44337')
+                .patch('/api/1')
+                .send(post)
+                .expectStatus(201)
+                .end();
+        });
+
+
+
+        //DELETE
+        it('Delete Post', function () {
+            hippie()
+                .json()
+                .base('https://localhost:44337/api/1')
+                .method('DELETE')
+                .expectStatus(200)
                 .end();
         });
 
