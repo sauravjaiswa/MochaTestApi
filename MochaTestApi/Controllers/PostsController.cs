@@ -60,7 +60,7 @@ namespace MochaTestApi.Controllers
         {
             try
             {
-                if (!ModelState.IsValid)
+                if (!ModelState.IsValid || post.Id==0)
                 {
                     return StatusCode(StatusCodes.Status400BadRequest);
                 }

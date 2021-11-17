@@ -27,9 +27,7 @@ namespace MochaTestApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc(options => {
-                options.EnableEndpointRouting = false;
-            }).AddXmlSerializerFormatters();
+            services.AddMvc();
 
             services.AddRefitClient<IFruitApiService>()
                 .ConfigureHttpClient(c =>
@@ -44,6 +42,8 @@ namespace MochaTestApi
                     c.BaseAddress = new Uri("https://jsonplaceholder.typicode.com");
                     c.Timeout = TimeSpan.FromSeconds(10);
                 });
+
+            services.AddRouting();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
