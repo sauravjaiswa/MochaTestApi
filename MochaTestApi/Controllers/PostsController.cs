@@ -55,7 +55,7 @@ namespace MochaTestApi.Controllers
             }
         }
 
-        [HttpPost("add")]
+        [HttpPost]
         public IActionResult AddPost([FromBody] Post post)
         {
             try
@@ -80,6 +80,16 @@ namespace MochaTestApi.Controllers
         {
             try
             {
+                try
+                {
+                    var postTemp = await _postsApiService.GetPost(id);
+                }
+                catch (Exception)
+                {
+                    return NotFound();
+                }
+
+
                 await _postsApiService.PutPost(id, post);
 
                 return StatusCode(StatusCodes.Status202Accepted);
@@ -95,6 +105,15 @@ namespace MochaTestApi.Controllers
         {
             try
             {
+                try
+                {
+                    var postTemp = await _postsApiService.GetPost(id);
+                }
+                catch (Exception)
+                {
+                    return NotFound();
+                }
+
                 await _postsApiService.PatchPost(id, post);
 
                 return StatusCode(StatusCodes.Status202Accepted);
@@ -110,6 +129,15 @@ namespace MochaTestApi.Controllers
         {
             try
             {
+                try
+                {
+                    var postTemp = await _postsApiService.GetPost(id);
+                }
+                catch (Exception)
+                {
+                    return NotFound();
+                }
+
                 await _postsApiService.DeletePost(id);
 
                 return StatusCode(StatusCodes.Status200OK);
