@@ -1,6 +1,8 @@
 var hippie = require('hippie');
 var baseUrl = 'http://localhost:25518';
 
+var assert = require('assert');
+
 /*describe('Github api', function () {
     describe('GET /users/vesln', function () {
         it('should return 200', function () {
@@ -68,21 +70,25 @@ describe('Mocha API Tests', function () {
 
 
     describe('Posts Controller', function () {
+
         //GET
-        it('Get All Posts get 200 code', function () {
+        it.only('Get All Posts get 200 code', function () {
             hippie()
                 .json()
                 .base(baseUrl)
                 .get('/api')
                 .expectStatus(200)
                 .end(function (err, res, body) {
+                    //console.log(body.length);
+                    assert.equal(100, body.length);
                     if (err) throw err;
                     //console.log(res);
+
                     process.exit(0);
                 });
         });
 
-        it.only('Get Post By id get 200 code', function () {
+        it('Get Post By id get 200 code', function () {
             hippie()
                 .json()
                 .base(baseUrl)
