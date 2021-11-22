@@ -11,5 +11,8 @@ const mbServerInstance = mb.create({
 });
 
 mbServerInstance.then(function () {
-    helloService.addService();
+    //helloService.helloWorld();
+    helloService.getPost();
+    //helloService.getAllPosts();
+    helloService.addPost({});
 });

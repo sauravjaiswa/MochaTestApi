@@ -313,6 +313,50 @@ describe('Mocha API Tests', function () {
         });
 
 
+        it.only('Test function', function () {
+            const response = { message: "hello world" }
+
+            const stubs = [
+                {
+                    predicates: [{
+                        equals: {
+                            method: "GET",
+                            "path": "/"
+                        }
+                    }],
+                    responses: [
+                        {
+                            is: {
+                                statusCode: 200,
+                                headers: {
+                                    "Content-Type": "application/json"
+                                },
+                                body: JSON.stringify(response)
+                            }
+                        }
+                    ]
+                }
+            ];
+
+            const imposter = {
+                port: 5001,
+                protocol: 'http',
+                stubs: stubs
+            };
+
+
+            hippie()
+                .header("Content-Type", "application/json")
+                .json()
+                .post('http://localhost:2525/imposters')
+                .send(JSON.stringify(imposter))
+                .end(function (err, res, body) {
+                    if (err) throw err;
+                    process.exit(0);
+                });
+        })
+
+
 
         //it('Hippie test', function () {
         //    hippie()

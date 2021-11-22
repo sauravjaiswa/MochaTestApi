@@ -2,22 +2,35 @@
 const settings = require('./settings');
 
 function postImposter(body) {
+    //console.log(body);
     const url = `http://localhost:${settings.port}/imposters`;
 
     return hippie()
-        .header("Content-Type", "application/json")
-        .json()
+        //.json()
         .post(url)
-        .body(JSON.stringify(body))
+        .header('Content-Type', 'application/json')
+        .send(JSON.stringify(body))
         .end(function (err, res, body) {
             if (err) throw err;
-            process.exit(0);
+            console.log(body);
+
+            //process.exit(0);
         });
-    //return fetch(url, {
-    //    method: 'POST',
-    //    headers: { 'Content-Type': 'application/json' },
-    //    body: JSON.stringify(body)
-    //});
 }
 
-module.exports = { postImposter };
+function addService(port, stubs) {
+    const imposter = {
+        //imposters: [
+            //{
+                port: port,
+                protocol: 'http',
+                stubs: stubs
+          //  }
+
+        //]
+    };
+
+    return postImposter(imposter);
+}
+
+module.exports = { addService };
