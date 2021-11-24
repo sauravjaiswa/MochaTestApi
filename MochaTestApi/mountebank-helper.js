@@ -18,11 +18,11 @@ function postImposter(body) {
         });
 }
 
-function addService(port, stubs) {
+function addService(stubs) {
     const imposter = {
         //imposters: [
             //{
-                port: port,
+                port: 5001,
                 protocol: 'http',
                 stubs: stubs
           //  }

@@ -11,8 +11,13 @@ const mbServerInstance = mb.create({
 });
 
 mbServerInstance.then(function () {
+    const body = { "userId": 1, "id": 10, "title": "ABC", "body": "primis in faucibus orci luctus et ultrices posuere cubilia curae donec pharetra magna vestibulum aliquet ultrices" };
+
     //helloService.helloWorld();
     helloService.getPost();
-    //helloService.getAllPosts();
-    helloService.addPost({});
+    helloService.getAllPost();
+    helloService.addPost();
+    helloService.putPost();
+    helloService.patchPost();
+    helloService.deletePost();
 });

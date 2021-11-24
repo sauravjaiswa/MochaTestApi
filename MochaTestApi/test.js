@@ -72,7 +72,7 @@ describe('Mocha API Tests', function () {
     describe('Posts Controller', function () {
 
         //GET
-        it.only('Get All Posts get 200 code', function () {
+        it('Get All Posts get 200 code', function () {
             hippie()
                 .json()
                 .base(baseUrl)
@@ -80,7 +80,7 @@ describe('Mocha API Tests', function () {
                 .expectStatus(200)
                 .end(function (err, res, body) {
                     //console.log(body.length);
-                    assert.equal(100, body.length);
+                    assert.equal(9, body.length);
                     if (err) throw err;
                     //console.log(res);
 
@@ -94,12 +94,13 @@ describe('Mocha API Tests', function () {
                 .base(baseUrl)
                 .get('/api/1')
                 .expectStatus(200)
-                .expectBody({
-                    "userId": 1,
-                    "id": 1,
-                    "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
-                    "body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
-                })
+                //.expectBody({
+                //    "userId": 1,
+                //    "id": 1,
+                //    "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+                //    "body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
+                //})
+                .expectBody({ "userId": 1, "id": 1, "title": "Structural Analysis Engineer", "body": "duis bibendum morbi non quam nec dui luctus rutrum nulla tellus" })
                 .end(function (err, res, body) {
                     if (err) throw err;
                     console.log(body);
@@ -137,7 +138,7 @@ describe('Mocha API Tests', function () {
                 .expectStatus(201)
                 .end(function (err, res, body) {
                     if (err) throw err;
-                    console.log(res);
+                    console.log(body);
                     process.exit(0);
                 });
         });
@@ -179,7 +180,7 @@ describe('Mocha API Tests', function () {
                 .expectStatus(202)
                 .end(function (err, res, body) {
                     if (err) throw err;
-                    console.log(res);
+                    console.log(body);
                     process.exit(0);
                 });
         });
@@ -206,7 +207,7 @@ describe('Mocha API Tests', function () {
         });
 
 
-        it('Put Post should give error 404 on passing incorrect id', function () {
+        it.only('Put Post should give error 404 on passing incorrect id', function () {
             var post = {
                 userId: 1,
                 id: 1865,
@@ -242,7 +243,7 @@ describe('Mocha API Tests', function () {
                 .expectStatus(202)
                 .end(function (err, res, body) {
                     if (err) throw err;
-                    console.log(res);
+                    console.log(body);
                     process.exit(0);
                 });
         });
@@ -294,7 +295,7 @@ describe('Mocha API Tests', function () {
                 .expectStatus(200)
                 .end(function (err, res, body) {
                     if (err) throw err;
-                    console.log(res);
+                    console.log(body);
                     process.exit(0);
                 });
         });
@@ -313,7 +314,7 @@ describe('Mocha API Tests', function () {
         });
 
 
-        it.only('Test function', function () {
+        it('Test function', function () {
             const response = { message: "hello world" }
 
             const stubs = [

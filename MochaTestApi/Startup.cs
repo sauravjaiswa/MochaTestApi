@@ -39,7 +39,8 @@ namespace MochaTestApi
             services.AddRefitClient<IPostsApiService>()
                 .ConfigureHttpClient(c =>
                 {
-                    c.BaseAddress = new Uri("https://jsonplaceholder.typicode.com");
+                    //c.BaseAddress = new Uri("https://jsonplaceholder.typicode.com");
+                    c.BaseAddress = new Uri("http://localhost:5001");
                     c.Timeout = TimeSpan.FromSeconds(10);
                 });
 
