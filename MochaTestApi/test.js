@@ -207,7 +207,7 @@ describe('Mocha API Tests', function () {
         });
 
 
-        it.only('Put Post should give error 404 on passing incorrect id', function () {
+        it('Put Post should give error 404 on passing incorrect id', function () {
             var post = {
                 userId: 1,
                 id: 1865,
@@ -314,48 +314,48 @@ describe('Mocha API Tests', function () {
         });
 
 
-        it('Test function', function () {
-            const response = { message: "hello world" }
+        //it('Test function', function () {
+        //    const response = { message: "hello world" }
 
-            const stubs = [
-                {
-                    predicates: [{
-                        equals: {
-                            method: "GET",
-                            "path": "/"
-                        }
-                    }],
-                    responses: [
-                        {
-                            is: {
-                                statusCode: 200,
-                                headers: {
-                                    "Content-Type": "application/json"
-                                },
-                                body: JSON.stringify(response)
-                            }
-                        }
-                    ]
-                }
-            ];
+        //    const stubs = [
+        //        {
+        //            predicates: [{
+        //                equals: {
+        //                    method: "GET",
+        //                    "path": "/"
+        //                }
+        //            }],
+        //            responses: [
+        //                {
+        //                    is: {
+        //                        statusCode: 200,
+        //                        headers: {
+        //                            "Content-Type": "application/json"
+        //                        },
+        //                        body: JSON.stringify(response)
+        //                    }
+        //                }
+        //            ]
+        //        }
+        //    ];
 
-            const imposter = {
-                port: 5001,
-                protocol: 'http',
-                stubs: stubs
-            };
+        //    const imposter = {
+        //        port: 5001,
+        //        protocol: 'http',
+        //        stubs: stubs
+        //    };
 
 
-            hippie()
-                .header("Content-Type", "application/json")
-                .json()
-                .post('http://localhost:2525/imposters')
-                .send(JSON.stringify(imposter))
-                .end(function (err, res, body) {
-                    if (err) throw err;
-                    process.exit(0);
-                });
-        })
+        //    hippie()
+        //        .header("Content-Type", "application/json")
+        //        .json()
+        //        .post('http://localhost:2525/imposters')
+        //        .send(JSON.stringify(imposter))
+        //        .end(function (err, res, body) {
+        //            if (err) throw err;
+        //            process.exit(0);
+        //        });
+        //})
 
 
 
